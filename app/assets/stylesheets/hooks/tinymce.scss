@@ -1,0 +1,90 @@
+@import "constants";
+@import "mixins";
+
+.mce-image-loader {
+  display: none !important;
+
+  + .image-selection-container {
+    height: 28px;
+    left: 140px;
+    position: absolute;
+    top: 0;
+    width: 338px;
+
+    .select_button {
+      background-color: $brand-primary;
+      border-color: $brand-primary;
+      color: $color-white;
+      cursor: pointer;
+      line-height: 18px;
+      padding: 6px 12px;
+      position: relative;
+      text-align: center;
+      width: 76px;
+      z-index: 2;
+    }
+
+    input[type=text] {
+      border: 1px solid $color-concrete;
+      border-radius: 4px;
+      height: 30px;
+      left: -5px;
+      padding-left: 10px;
+      position: relative;
+      width: calc(100% - 100px);
+    }
+  }
+}
+
+.mce-primary {
+  background-color: $brand-primary !important;
+  border-color: $brand-primary !important;
+  border-radius: $border-radius-default !important;
+  color: $color-white !important;
+}
+
+.mce-primary .mce-txt:hover {
+  color: $color-white !important;
+}
+
+.ql-editor {
+  font-size: 16px;
+}
+
+.mce-top-part {
+  z-index: 5;
+}
+
+.mce-widget.mce-btn {
+  border-color: $color-white !important;
+
+  &:not(.mce-active):hover,
+  &:not(.mce-active):active {
+    span,
+    i {
+      color: $brand-primary;
+    }
+  }
+
+  &.mce-active,
+  &.mce-active:hover,
+  &.mce-active:active,
+  &.mce-active:focus {
+    background-color: $brand-primary;
+
+    span,
+    i {
+      color: $color-white;
+    }
+  }
+}
+
+// Caret symbol has unneeded border-left
+.mce-splitbtn:hover .mce-open {
+  border-left: $color-white !important;
+}
+
+// Selected item list should be $brand-primary
+.mce-menu-item.mce-active.mce-menu-item-normal {
+  background-color: $brand-primary !important;
+}

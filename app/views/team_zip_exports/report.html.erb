@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style type="text/css">
+      <%= Rails.application
+               .assets_manifest
+               .find_sources('application.css')
+               .first
+               .to_s
+               .force_encoding(Encoding::UTF_8)
+               .html_safe %>
+    </style>
+
+    <!-- Libraries for tables and formulas -->
+    <% ['handsontable.full.min.js', 'lodash.js', 'numeral.js', 'numeric.js',
+        'md5.js', 'jstat.js', 'formula.js', 'parser.js', 'ruleJS.js',
+        'handsontable.formula.js', 'big.min.js' ].each do |js_asset| %>
+        <script type="text/javascript">
+          <%= j Rails.application
+                   .assets_manifest
+                   .find_sources(js_asset)
+                   .first
+                   .to_s
+                   .force_encoding(Encoding::UTF_8)
+                   .html_safe %>
+        </script>
+    <% end %>
+
+    <!-- Init Handsontables -->
+    <script>
+      window.onload = function() {
+        var tables = document.getElementsByClassName('hot-table-container');
+        var tableVals = document.getElementsByClassName('hot-table-contents');
+
+        for (i = 0; i < tables.length; i++) {
+          tables[i].innerHTML=''
+          new Handsontable(tables[i], {
+              data: JSON.parse(tableVals[i].value).data,
+              rowHeaders: true,
+              colHeaders: true,
+              filters: true,
+              dropdownMenu: true,
+              formulas: true
+          });
+        }
+      };
+    </script>
+
+    <title><%= title %></title>
+  </head>
+  <body class='print-report-body'>
+    <div class='print-report'>
+      <%= content.force_encoding(Encoding::UTF_8).html_safe %>
+    </div>
+  </body>
+</html>

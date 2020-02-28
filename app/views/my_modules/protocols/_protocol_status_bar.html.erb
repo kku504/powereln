@@ -1,0 +1,14 @@
+<div class="panel panel-default panel-protocol-status help_tooltips"
+     data-tooltiplink="<%= I18n.t('tooltips.link.protocol.linking') %>"
+     data-tooltipcontent="<%= I18n.t('tooltips.text.protocol.linking') %>">
+  <div class="panel-body">
+    <% if @protocol.linked? %>
+      <%= protocol_status_href(@protocol) %>
+    <% else %>
+      <%= t("my_modules.protocols.protocol_status_bar.unlinked") %>
+    <% end %>
+    &nbsp;
+    <%= render partial: "my_modules/protocols/protocol_status_bar_buttons.html.erb" %>
+  </div>
+</div>
+<%= javascript_include_tag("my_modules/protocols/protocol_status_bar") %>

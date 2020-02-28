@@ -1,0 +1,103 @@
+// scss-lint:disable SelectorDepth
+// scss-lint:disable NestingDepth
+
+@import "constants";
+@import "mixins";
+
+.protocol-repository-header {
+
+  .protocol-info {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 40px;
+    position: relative;
+
+    .created-at-block,
+    .last-modified-block,
+    .edit-authors-block,
+    .keywords-block,
+    .added-by-block, {
+      flex-grow: 1;
+      margin-bottom: 10px;
+      margin-right: 20px;
+
+      .block-icon {
+        color: $color-silver;
+        font-size: 18px;
+        margin-right: 5px;
+      }
+
+      .block-label {
+        align-items: center;
+        display: flex;
+        flex-shrink: 0;
+      }
+    }
+
+    .edit-authors-block {
+      align-items: center;
+      display: flex;
+      flex-basis: 30%;
+
+      .edit-authors-container {
+        display: flex;
+        flex-grow: 1;
+        margin-left: 10px;
+        position: relative;
+
+        .view-mode,
+        .input-field {
+          font-weight: bold;
+        }
+      }
+    }
+
+    .protocol-description {
+      flex-basis: 100%;
+      margin-bottom: 10px;
+
+      .form-group {
+        margin: 0;
+      }
+    }
+
+    .keywords-block {
+      align-items: center;
+      display: flex;
+      flex-basis: 100%;
+
+      .key-words-container {
+        display: inline-block;
+        flex-grow: 1;
+        margin-left: 5px;
+
+        .dropdown-selector-container {
+          .input-field {
+            border-color: transparent;
+
+            &:hover {
+              border-color: $color-alto;
+            }
+          }
+
+          &.active {
+            .input-field {
+              border-color: $color-alto;
+            }
+          }
+
+          &.view-mode {
+            .input-field {
+              border-color: transparent;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .repository-protocol-name {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,119 @@
+@import "constants";
+@import "mixins";
+
+.inline-editing-container {
+  line-height: 32px;
+  position: relative;
+  width: 100%;
+
+  .button-container {
+    height: 32px;
+    line-height: 32px;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 72px;
+
+    span {
+      color: $color-silver;
+      cursor: pointer;
+      display: inline-block;
+      line-height: 32px;
+      position: absolute;
+      text-align: center;
+      width: 36px;
+
+      &:nth-child(1) {left: 0;}
+
+      &:nth-child(2) {right: 0;}
+    }
+  }
+
+  .error-block {
+    bottom: 3px;
+    color: $brand-danger;
+    display: none;
+    font-size: 11px;
+    line-height: 11px;
+    position: absolute;
+
+  }
+
+  &.error {
+
+    .error-block {
+      display: block;
+    }
+
+    .input-field {
+      font-size: 16px;
+      line-height: 20px;
+      padding-bottom: 10px;
+      padding-top: 0;
+    }
+  }
+
+  &:hover input,
+  &:hover .view-mode {
+    border: 1px solid $color-silver;
+    border-radius: 3px;
+
+    &:disabled {
+      border: 1px solid $color-gainsboro;
+    }
+  }
+
+  .view-mode {
+    border: 1px solid transparent;
+    cursor: pointer;
+    line-height: 26px;
+    margin-left: -5px;
+    min-height: 30px;
+    overflow: hidden;
+    padding: 2px 4px;
+    padding-right: 36px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: calc(100% - 32px);
+
+    &:empty:not(:focus):before {
+      color: $color-silver-chalice;
+      content: attr(data-placeholder);
+      font-weight: normal;
+    }
+  }
+
+  input {
+    border: 1px solid $color-silver;
+    border-radius: $border-radius-small;
+    cursor: pointer;
+    display: block;
+    line-height: 26px;
+    margin-left: -5px;
+    padding: 2px 4px;
+    padding-right: 36px;
+    width: calc(100% - 32px);
+
+    &::placeholder {
+      color: $color-silver-chalice;
+      font-weight: normal;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+
+    &:disabled {
+      background: transparent;
+      border: 1px solid transparent;
+      cursor: pointer;
+      pointer-events: none;
+      user-select: none;
+
+      + .button-container {
+        display: none;
+      }
+    }
+  }
+}

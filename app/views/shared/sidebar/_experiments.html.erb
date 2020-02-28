@@ -1,0 +1,19 @@
+<% if project.active_experiments.present? %>
+  <ul>
+    <% project.active_experiments.each do |experiment| %>
+      <% cache [action_name, current_user, experiment] do %>
+        <li data-parent="candidate">
+          <span class="tree-link line-wrap first-indent" title="<%= experiment.name %>">
+            <i class="no-arrow"></i>
+            <%= link_to experiment.name,
+                        experiment_action_to_link_to(experiment),
+                        class: 'overview_exp_label line-wrap',
+                        data: { type: 'experiment', id: experiment.id }
+                        %>
+          </span>
+          <%= render partial: 'shared/sidebar/my_modules', locals: { experiment: experiment } %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>

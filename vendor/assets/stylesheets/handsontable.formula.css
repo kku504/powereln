@@ -1,0 +1,9 @@
+/* Licensed under the MIT license */
+
+td.formula {
+  background-color: yellow;
+}
+
+td.formula-error {
+  background-color: red;
+}

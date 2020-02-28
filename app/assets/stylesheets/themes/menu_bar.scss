@@ -1,0 +1,90 @@
+@import "constants";
+@import "mixins";
+
+.menu-bar {
+  background-color: $color-white;
+  box-shadow: $flyout-shadow;
+  height: 100%;
+  left: 0;
+  padding-bottom: 50px;
+  position: fixed;
+  width: 83px;
+  z-index: 1001;
+
+  .scroll-wrapper {
+    height: 100%;
+    padding-top: 16px;
+    width: 83px;
+    overflow-x: hidden;
+  }
+
+  ul.nav > li {
+
+    & > a,
+    & > span {
+      @include font-small;
+      color: $color-silver-chalice;
+      display: grid;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 10px 0;
+      text-align: center;
+      word-break: normal;
+
+      .fas {
+        font-size: 18px;
+        padding-bottom: 5px;
+      }
+    }
+
+    &.active {
+      @include box-shadow(-4px 0 0 $brand-primary);
+      background-color: $color-gainsboro;
+      margin-left: 4px;
+
+      & > a {
+        color: $color-emperor;
+      }
+    }
+
+    &.disabled {
+      box-shadow: none;
+      cursor: not-allowed;
+      opacity: .65;
+    }
+  }
+
+  ul.nav-bottom {
+    bottom: 0;
+    padding-bottom: 16px;
+    position: fixed;
+    width: inherit;
+
+    .academy-color {
+      color: $brand-academy-dark;
+    }
+  }
+
+  .dropup {
+    .dropdown-menu {
+      bottom: 0;
+      left: 99%;
+      margin-bottom: 0;
+    }
+
+    &.open > a {
+      color: $color-emperor;
+    }
+  }
+}
+
+@media(max-height:510px) {
+  .menu-bar .nav-bottom {
+    position: relative;
+    width: auto;
+  }
+}
+
+.all-teams-navigation-link {
+  color: $brand-primary !important;
+}

@@ -1,0 +1,135 @@
+@import "constants";
+@import "mixins";
+
+.tree {
+  height: 100%;
+  padding-bottom: 30px;
+
+  ul {
+    padding-left: 0;
+  }
+
+  > ul {
+    margin-bottom: 0;
+  }
+
+  .first-indent {
+    margin-left: 30px;
+  }
+
+  .second-indent {
+    margin-left: 60px;
+  }
+
+  li {
+    list-style-type: none;
+    margin: 0;
+    position: relative;
+
+    span {
+      display: block;
+      padding: 15px;
+
+      &.my-module-group-element {
+        border: 0;
+        padding: 0;
+      }
+
+      &.fa-map-marker-alt {
+        border: 0;
+        display: inline-block;
+        padding: 0;
+      }
+    }
+
+    &.active > span {
+      background-color: $color-white;
+      color: $brand-primary;
+      font-weight: bold;
+
+      &.first-indent > span,
+      &.no-indent > span {
+        border: 0;
+        display: inline-block;
+        padding: 0;
+        width: 100%;
+      }
+    }
+
+    i.no-arrow {
+      padding-left: 15px;
+    }
+
+    i.fas {
+      cursor: pointer;
+      font-size: 9pt;
+
+      &.expanded {
+        @include rotate(90deg);
+      }
+    }
+
+    // Links are recolored
+    a {
+      color: $color-volcano;
+      position: relative;
+
+      &.disabled {
+        color: $brand-primary;
+      }
+
+      &:hover {
+        color: $color-volcano;
+      }
+    }
+  }
+
+  .tree-link {
+    display: flex;
+
+    .btn-secondary {
+      background: transparent;
+    }
+
+    a:not(.canvas-center-on, .btn) {
+      width: 100%;
+    }
+
+    a:not(.canvas-center-on)::after {
+      height: 48px;
+      left: -3px;
+      position: absolute;
+      top: -18px;
+      width: 100%;
+    }
+  }
+
+  #settings {
+    .fa-caret-right {
+      margin-left: -15px;
+    }
+
+    .no-indent {
+      padding-left: 30px;
+    }
+
+    .first-indent {
+      padding-left: 15px;
+    }
+  }
+}
+
+#repo-tree {
+  height: calc(100% - 50px);
+
+  .fas-custom {
+    float: right;
+    top: 2px;
+  }
+
+  .active {
+    .fas-custom {
+      fill: $brand-primary;
+    }
+  }
+}
