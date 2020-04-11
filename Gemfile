@@ -2,7 +2,7 @@
 
 source 'http://rubygems.org'
 
-ruby '2.7.0'
+ruby '2.6.4'
 
 gem 'bootsnap', require: false
 gem 'bootstrap-sass', '~> 3.4.1'
